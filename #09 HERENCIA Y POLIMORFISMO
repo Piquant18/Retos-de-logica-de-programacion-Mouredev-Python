@@ -1,0 +1,91 @@
+class Animal():
+    def __init__(self, name : str):
+        self.name = name
+    
+    def sound(self):
+        pass
+
+class Dog(Animal):
+    def sound(self):
+        print("Guau!")
+        
+class Cat(Animal):
+    def sound(self):
+        print("Miau!")
+
+def print_sound(animal : Animal):
+    animal.sound()
+    
+my_dog = Dog("Perro")
+print_sound(my_dog)
+my_cat = Cat("Gato")
+print_sound(my_cat)
+
+
+# Extra
+
+class Employee():
+    def __init__(self, id : int, name : str):
+        self.id = id
+        self.name = name
+        self.employees = []
+        
+    def add_employees(self, employee):
+        self.employees.append(employee)
+        
+    def print_employees(self):
+        for employee in self.employees:
+            print(employee.name)
+    
+class Manager(Employee):
+    def cordenate_projects(self):
+        print(f"El Manager {self.name} esta coordinando todos los proyectos de la empresa")
+
+class Project_Manager(Employee):
+    def __init__(self, id : int, name : str, project : str):
+        super().__init__(id, name)
+        self.project = project
+    
+    def cordenate_project(self):
+        print(f"{self.name} esta coordinando el {self.project}")
+        
+class Programmer(Employee):
+    def __init__(self, id : int, name : str, language : str):
+        super().__init__(id, name)
+        
+        self.language = language
+    def code(self):
+        print(f"El programador {self.name} esta programando en {self.language}")
+        
+    def add_employees(self, employee : Employee):
+        print(f"Un programador no tiene empleados a su cargo. {employee.name} no se anadira")
+
+My_manager = Manager(1, "Jhon")
+My_manager.cordenate_projects()
+My_project_manager = Project_Manager(2, "Medina", "Proyecto 1")
+My_project_manager2 = Project_Manager(3, "Lopez", "Proyecto 2")
+My_project_manager.cordenate_project()
+My_project_manager2.cordenate_project()
+My_programmer1 = Programmer(4, "J", "Python")
+My_programmer2 = Programmer(5, "A", "JS")
+My_programmer3 = Programmer(6, "M", "HTML")
+My_programmer4 = Programmer(7, "L", "C")
+My_programmer1.code()
+My_programmer2.code()
+My_programmer3.code()
+My_programmer4.code()
+
+My_manager.add_employees(My_project_manager)
+My_manager.add_employees(My_project_manager2)
+
+My_project_manager.add_employees(My_programmer1)
+My_project_manager.add_employees(My_programmer2)
+My_project_manager2.add_employees(My_programmer3)
+My_project_manager2.add_employees(My_programmer4)
+
+My_programmer1.add_employees(My_programmer2)
+
+My_manager.print_employees()
+My_project_manager.print_employees()
+My_project_manager2.print_employees()
+My_programmer1.print_employees()
