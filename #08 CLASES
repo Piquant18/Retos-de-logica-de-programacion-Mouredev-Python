@@ -1,0 +1,94 @@
+"""
+ejercicio
+"""
+class programer():
+    surname: str = None
+    def __init__(self, name: str, age: int, lenguages: list):
+        self.name = name
+        self.age = age
+        self.lenguages = lenguages
+    def print(self):
+        print(
+            f"Nombre: {self.name} | Apellido: {self.surname} | Edad: {self.age} | Lenguajes: {self.lenguages}")
+my_programer = programer("Jhon", 18,["C", "Python"])
+my_programer.print()
+my_programer.surname = "Medina"
+my_programer.print()
+my_programer.age = 19
+my_programer.print()
+my_programer.lenguages = ["C", "Python", "HTML"]
+my_programer.print()
+
+
+"""
+extra
+"""
+class stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if self.count() == 0:
+            return None
+        return self.stack.pop()
+
+    def count(self):
+        return len(self.stack)
+
+    def print(self):
+        for item in reversed(self.stack):
+            print(item)
+
+my_stack = stack()
+my_stack.push("A")
+my_stack.push("B")
+my_stack.push("C")
+print(my_stack.count())
+my_stack.print()
+my_stack.pop()
+print(my_stack.count())
+print(my_stack.pop())
+print(my_stack.pop())
+print(my_stack.pop())
+print(my_stack.pop())
+print(my_stack.pop())
+print(my_stack.count())
+
+
+# lo mismo solo cambia coordenadas xd
+class queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        if self.count() == 0:
+            return None
+        return self.queue.pop(0)
+
+    def count(self):
+        return len(self.queue)
+
+    def print(self):
+        for item in self.queue:
+            print(item)
+
+my_queue = queue()
+my_queue.enqueue("A")
+my_queue.enqueue("B")
+my_queue.enqueue("C")
+print(my_queue.count())
+my_queue.print()
+my_queue.dequeue()
+print(my_queue.count())
+print(my_queue.dequeue())
+print(my_queue.dequeue())
+print(my_queue.dequeue())
+print(my_queue.dequeue())
+print(my_queue.dequeue())
+print(my_queue.count())
