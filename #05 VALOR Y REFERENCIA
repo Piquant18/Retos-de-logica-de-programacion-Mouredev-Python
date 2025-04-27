@@ -1,0 +1,48 @@
+# por valor
+a = 8
+b = a
+b += 4
+print(f"a = {a}, b = {b}")
+
+# por referencia
+lista1 = [4, 8]
+lista2 = lista1
+lista2.append(4)
+print(f"lista 1 = {lista1}, lista2 = {lista2}")
+
+# funcion con tipos inmutables (por valor)
+def modificar_valor(x):
+    x += 8
+    return x
+num = 4
+resultado = modificar_valor(num)
+print(f"num (original) = {num}, resultado (modificado) = {resultado}")
+
+# funcion con tipos mutables (por referencia)
+def modificar_lista(lista):
+    lista.append(99)
+mi_lista = [4, 8]
+print(mi_lista)
+modificar_lista(mi_lista)
+print(f"mi lista despues de la funcion = {mi_lista}")
+
+
+"""
+extras
+"""
+
+# intercambio por valor (inmutables)
+def intercabio_por_valor(x, y):
+    return x, y
+a, b = 5, 10
+c, d = intercabio_por_valor(a, b)
+print(f"originales: a = {a}, b = {b}")
+print(f"nuevas: c = {c}, d = {d}")
+
+# intercambio por referencia (mutables)
+def intercambio_por_referencia(listaa, listab):
+    listaa[:], listab[:] = listab[:], listaa[:]
+lista_a = [1, 2, 3]
+lista_b = [4, 5, 6]
+intercambio_por_referencia(lista_a, lista_b)
+print(f"originales intercambiados: lista_a = {lista_a}, lista_b = {lista_b}")
