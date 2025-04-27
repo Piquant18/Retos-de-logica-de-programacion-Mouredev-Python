@@ -1,0 +1,74 @@
+# pila / stack (LIFO)
+#crear
+stack = [1, 2, 3]
+#agregar
+stack.append(4)
+print(stack)
+
+stack_item = stack[len(stack) - 1]      
+del stack[len(stack) - 1]              
+print(stack_item)                       
+print(stack.pop())                      
+print(stack)
+
+
+# cola / queue (FIFO)
+queue = [11, 22, 33]
+queue.append(44)
+print(queue)
+
+queue_item = queue[0]   
+del queue[0]            
+print(queue_item)
+print(queue.pop(0))     
+print(queue)
+
+
+"""
+extra
+"""
+
+
+def web_back():
+    stack = []
+    while True:
+        action = input(
+            "Anade una url o coloca una opcion adelante/atras/salir: "
+        )
+        if action == "salir":
+            print("Saliendo del programa")
+            break
+
+        elif action == "adelante":
+            pass
+
+        elif action == "atras":
+            if len(stack) > 0:
+                stack.pop()
+
+        else:
+            stack.append(action)
+
+        if len(stack) > 0:
+            print(f"Has navegado a la web: {stack[len(stack) - 1 ]}")
+
+        else:
+            print("Estas en la pagina de inicio")
+
+web_back()
+
+
+def printer():
+    queue = []
+    while True:
+        action = input("Anade un documento o selecciona imprimir/salir: ")
+
+        if action == "salir":
+            break
+        elif action == "imprimir":
+            if len(queue) > 0:
+                print(f"Imprimiendo {queue.pop(0)}")
+        else:
+            queue.append(action)
+        print(f"Cola de impresion: {queue}")
+printer()
