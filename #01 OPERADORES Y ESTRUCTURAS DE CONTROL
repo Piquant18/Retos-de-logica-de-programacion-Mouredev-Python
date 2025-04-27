@@ -1,0 +1,113 @@
+#operadores aritmeticos
+print("OPERADORES ARITMETICOS")
+print("suma 8+4 =", 8+4)
+print("resta 8-4 =", 8-4)
+print("multiplicacion 8*4 =", 8*4)
+print("division 8/4 =", 8/4)
+print("division entera 8//4 =", 8//4)
+print("modulo (residuo) 8%4 =", 546458%3)
+print("exponente 8**4 =", 8**4)
+print(" ")
+
+#operadores de comparacion
+print("OPERADORES DE COMPARACION")
+print("igualdad 8==4", 8==4)
+print("desigualdad 8!=4", 8!=4)
+print("mayor que 8>4", 8>4)
+print("menor que 8<4", 8<4)
+print("mayor igual que 8>=4", 8>=4)
+print("menor igual que 8<=4", 8<=4)
+print(" ")
+
+#operadores logicos
+print("OPERADORES LOGICOS")
+print("ambas son verdadedas AND : 8-4 == 4 and 4-8 == -4", 8-4 == 4 and 4-8 == -4)
+print("una es verdadadera OR : 8-4 == 4 and 4-8 == -4", 8-4 == 4 or 4*8 == -4)
+print("ninguna es verdadadera NOT : 8-4 == 4 and 4-8 == -4", not (8*4 == 4 and 4*8 == -4))
+print(" ")
+
+#operadores de asignacion
+print("OPERADORES DE ASIGNACION")
+my_number = 8      #asigno
+print(my_number)
+my_number += 2
+print(my_number)
+my_number -= 1
+print(my_number)
+my_number *= 2
+print(my_number)
+my_number /= 2
+print(my_number)
+my_number %= 2
+print(my_number)
+my_number **= 1
+print(my_number)
+my_number //= 1
+print(my_number)
+print(" ")
+
+#operadores con identidad
+print("OPERADORES CON IDENTIDAD")
+my_new_number = my_number
+print("my_number is my_new_number es", my_number is my_new_number)
+print("my_number is not my_new_number es", my_number is not my_new_number)
+print(" ")
+
+#operadores de pertenecia
+print("OPERADORES DE PERTENENCIA")
+print("'a' in 'manzana'", 'a' in 'manzana')
+print("'a' not in 'manzana'", 'a' not in 'manzana')
+print(" ")
+
+#operadores de bits
+print("OPERADORES DE BITS")
+a = 8   # 1000
+b = 4   # 0100
+print("AND: 8 & 4 =", 8 & 4)     #0000 repetir 1 en ambas
+print("OR: 8 | 4 =", 8 | 4)      #1100 siempre que haya 1
+print("XOR: 8 ^ 4 =", 8 ^ 4)     #1100 opuestos no pares
+print("NOT: ~8", ~8)             #1000 -> 0111 invierte los bits queda negativo
+print("DESPLAZAMIENTO A LA DERECHA: 8 >> 4", 8 >> 4)    #0000
+print("DESPLAZAMIENTO A LA IZQUIERDA: 8 << 4", 8 << 4)  #10000000
+print(" ")
+
+
+#condicionales
+print("CONDICIONALES")
+my_p = "chamac"
+if my_p == "chamo":
+    print("my_p es 'chamo'")
+elif my_p == "chamaco":
+    print("my_p es 'chamaco'")
+else:
+    print("my_p no es 'chamo' ni 'chamaco'")
+print(" ")
+
+#iterativas
+print("INTERATIVAS")
+for i in range(10):
+    print(i)
+
+i = 0
+
+while i <= 9:
+    print(i)
+    i += 1
+print(" ")
+
+#manejo de exepciones
+print("MANEJO DE EXEPCIONES")
+try:
+    print(10 / 0)
+except:
+    print("Ha ocurrido un error")
+finally:
+    print("Reiniciar")
+print(" ")
+
+
+#extra
+print("EXTRA")
+for i in range (10, 56):
+    if i %  2 == 0 and i != 16 and i % 3 != 0:
+        print(i)
