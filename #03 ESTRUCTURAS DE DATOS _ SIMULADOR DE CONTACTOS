@@ -1,0 +1,127 @@
+# listas
+print(" ")
+
+#crea
+lista = ["Kevin", "Yeny", "Pedro", "Lucas"]
+print(lista)
+
+#agrega
+lista.append("Samuel")
+print(lista)
+
+#elimina
+lista.remove("Samuel")
+print(lista)
+
+#reemplaza respecto a la ubicacion
+lista[0] = "Samuel"
+print(lista)
+
+#sortea xd
+lista.sort()
+print(lista)
+
+
+# diccionarios
+
+#crea
+print(" ")
+diccionario = {"Jhon" : "Medina", "Pedro" : "Pascal"}
+print(diccionario)
+
+#agrega
+diccionario["Yenny"] = "Huilitraro"
+print(diccionario)
+
+#elimina
+del diccionario["Pedro"]
+print (diccionario)
+
+#actualiza
+diccionario["Jhon"] = "Lopez"
+print(diccionario)
+
+
+
+# conjuntos
+print(" ")
+
+#crear
+conjunto = {434, 35434, 2454 , 132454}
+print(conjunto)
+
+#agregar
+conjunto.add(5)
+print(conjunto)
+
+#eliminaar
+conjunto.remove(434)
+print(conjunto)
+
+#"actualiza" solo agrega
+conjunto.update([1, 6])
+print(conjunto)
+
+#ordena
+orden = sorted(conjunto)        #sorted lo convierte en una lista y la lista lo ordena
+print(orden)
+
+
+# tuplas
+
+print(" ")
+tupla = (4, 3, 2, 1)
+print(tupla)
+new_tupla = tupla + (5,)
+print(new_tupla)
+
+
+# extra
+print(" ")
+def mis_contactos():
+    contactos = {}
+    def insertar_contactos():
+        numero = input("Ingrese el numero de un contacto: ")
+        if numero.isdigit() and len(numero) > 0 and len(numero) <= 10:
+            contactos[nombre] = numero
+        else:
+            print("Introduce un numero de maximo 10 dijitos.")
+    while True:
+        print("")
+        print("1. Buscar contacto")
+        print("2. Anadir contacto")
+        print("3. Actualizar contacto")
+        print("4. Eliminar contacto")
+        print("5. salir")
+
+        opcion = input("\nSeleccione una opcion: ")
+        match opcion:
+            case "1":
+                nombre = input("Ingrese el nombre del contacto a buscar: ")
+                if nombre in contactos:
+                    print(
+                        f"El numero de {nombre} es {contactos[nombre]}.")
+                else:
+                    print(f"El contanto de {nombre} no existe.")
+            case "2":
+                nombre = input("Ingrese el nombre del nuevo contacto: ")
+                insertar_contactos()
+            case "3":
+                nombre = input("Ingrese el nombre del contacto que quieres actualizar: ")
+                if nombre in contactos:
+                    insertar_contactos()
+                else:
+                    print("El contacto {nombre} no existe.")
+            case "4":
+                nombre = input("Introduce el nombre del contacto que quieres eliminar: ")
+                if nombre in contactos:
+                    del contactos[nombre]
+                else:
+                    print("El contacto {nombre} no existe.")
+            case "5":
+                print("Saliendo de contactos.")
+                break
+            case _:
+                print("Opcion no valida. Elige una opcion del 1 al 5")
+
+mis_contactos()
