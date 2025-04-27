@@ -1,0 +1,35 @@
+# recursividad
+def imprimir_numeros(num):
+    if num < 0:
+        return
+    print(num)
+    imprimir_numeros(num -1)
+imprimir_numeros(100)
+
+def imprimir_numeros(num):
+    if num > 100:
+        return
+    print(num)
+    imprimir_numeros(num + 1)
+imprimir_numeros(0)
+
+"""
+extra
+"""
+# recursividad (factorial)
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)         #multiplica el resultado por el n-1:     1*1=1  2*1=2   3*2=6   4*6=24
+numero = 4
+print(f"El factirial de {numero} es: {factorial(numero)}")
+
+# recursividad (fibonacci)
+def fibonacci(x):
+    if x == 0:
+        return 0
+    elif x == 1:
+        return 1
+    return fibonacci(x - 1) + fibonacci(x - 2)                              # al restar se resta en posicion de numero de fibonacci no numeros normales
+x = 6                                                                           
+print(f"El numero de fibonacci en la posicion {x} es: {fibonacci(x)}")
