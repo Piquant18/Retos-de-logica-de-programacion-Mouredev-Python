@@ -1,0 +1,56 @@
+import unittest
+from datetime import datetime, date
+
+"Ejercicio"
+
+def sum(a, b):
+    if not isinstance(a, (int, float)) or not isinstance (b, (int, float)):
+        raise ValueError("Los argumentos deber ser enteros o decimales")
+    return a + b
+
+class TestSum(unittest.TestCase):
+    def test_sum(self):
+        self.assertEqual(sum(7, 4), 11)
+        self.assertEqual(sum(7, -4), 3)
+        self.assertEqual(sum(0, 0), 0)
+        self.assertEqual(sum(7.6, 3.4), 11)
+        self.assertEqual(sum(7.5, 4), 11.5)
+        self.assertEqual(sum(7.5, 3.5), 11)
+        
+    def test_sum_type(self):
+        with self.assertRaises(ValueError):
+            sum("7", 4)
+        with self.assertRaises(ValueError):
+            sum(7, "4")
+        with self.assertRaises(ValueError):
+            sum("7", "4")
+        with self.assertRaises(ValueError):
+            sum("a", 4)
+        with self.assertRaises(ValueError):
+            sum(None, 4)
+
+
+"Extra"
+
+class TestData(unittest.TestCase):
+    def setUp(self) -> None:
+        self.data = { 
+            "name" : "Jhon",
+            "age" : 19,
+            "birth" : datetime.strptime("20-03-06", "%d-%m-%y").date(),
+            "languages" : ["Python", "C"]
+            }
+
+    def test_exist(self):
+        self.assertIn("name", self.data)
+        self.assertIn("age", self.data)
+        self.assertIn("birth", self.data)
+        self.assertIn("languages", self.data)
+        
+    def test_correct_data(self):
+        self.assertIsInstance(self.data["name"], str)
+        self.assertIsInstance(self.data["age"], int)
+        self.assertIsInstance(self.data["birth"], date)
+        self.assertIsInstance(self.data["languages"], list)
+
+unittest.main()
