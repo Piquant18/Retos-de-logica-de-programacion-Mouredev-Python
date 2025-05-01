@@ -1,0 +1,25 @@
+import re
+
+"""
+Ejercicio
+"""
+def search_numbers(text: str) -> list:
+    return re.findall(r"\d+", text)         
+
+print(search_numbers("este es el ejercicio 16 hecho el 01/05/2025."))
+
+"""
+Extra
+"""
+
+def validate_mail(mail: str) -> bool:
+    return bool(re.match(r"^[\w.+-]+@[\w]+\.[a-zA-Z]+$", mail))            
+print(validate_mail("jhonmedina0320@gmail.com"))                            
+
+def validate_number(number: str) -> bool:
+    return bool(re.match(r"^\+?[\d\s]{3,}$", number))                       
+print(validate_number("+57 311 334 0227"))
+
+def validate_web(url: str) -> bool:
+    return bool(re.match("^http[s]?://(www.)?[\w]+\.[a-zA-Z]{2,}$", url))   
+print(validate_web("https://retosdeprogramacion.com"))
