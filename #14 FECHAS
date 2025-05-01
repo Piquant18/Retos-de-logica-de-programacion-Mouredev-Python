@@ -1,0 +1,28 @@
+from datetime import datetime
+
+"Ejercicio"
+now = datetime.now()
+birth = datetime(2006, 3, 20, 1, 0, 0)
+
+print(now)
+print(birth)
+
+age = now - birth
+print(type(age))
+print(f"Tengo {age.days / 365} años")
+
+
+"Extra"
+
+
+print(birth.strftime("%d-%m-%y"))
+print(birth.strftime("%d-%m-%Y"))
+print(birth.strftime("%H-%M-%S"))
+print(birth.strftime("%j"))
+print(birth.strftime("%A"))
+print(birth.strftime("%h"))
+print(birth.strftime("%B"))
+print(birth.strftime("%c"))
+print(birth.strftime("%x"))
+print(birth.strftime("%X"))
+print(birth.strftime("%p"))
