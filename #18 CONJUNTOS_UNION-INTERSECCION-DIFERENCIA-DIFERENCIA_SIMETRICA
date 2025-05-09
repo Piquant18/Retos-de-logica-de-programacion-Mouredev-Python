@@ -1,0 +1,43 @@
+"""
+Ejercicio
+"""
+datos = [1, 2, 3, 4, 5]
+print(f"Esctructura inicial: {datos}")
+
+datos.append(6)
+print(f"Añadiendo elemento al final: {datos}")
+
+datos.insert(0, 0)
+print(f"Añadiendo elemento al principio: {datos}")
+
+datos.extend([7, 8, 9])
+print(f"Añadiendo elemento al final: {datos}")
+
+datos[3:3] = [-1, -2, -3]
+print(f"Añadiendo elementos en una posicion: {datos}")
+
+del datos[3]
+print(f"Eliminando un elemento en una posicion: {datos}")
+
+datos[4] = -1
+print(f"Actualizando un elemento en una posicion: {datos}")
+
+print(f"Comprobar si un elemento existe: {-1 in datos}")
+
+print(f"Eliminar el contenido: {datos.clear()}")
+
+"""
+Extra
+"""
+
+set1 = {1, 2, 3, 4, 5}
+set2 = {1, 2, 3, 4, 6, 7}
+
+print(f"Union: {set1.union(set2)}")
+
+print(f"Interseccion: {set1.intersection(set2)}")
+
+print(f"Diferencia set 1: {set1.difference(set2)}")
+print(f"Diferencia set 2: {set2.difference(set1)}")
+
+print(f"Diferencia simetrica: {set1.symmetric_difference(set2)}")
