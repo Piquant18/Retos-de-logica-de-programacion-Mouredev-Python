@@ -1,0 +1,67 @@
+from enum import Enum
+
+"Ejercicio"
+
+class Week_Days(Enum):
+    MONDAY = 1
+    TUESDAY = 2
+    WEDNESDAY = 3
+    THURSDAY = 4
+    FRIDAY = 5
+    SATURDAY = 6
+    SUNDAY = 7
+    
+def get_day(number : int):
+    print(Week_Days(number).name)
+    
+get_day(1)
+get_day(2)
+get_day(3)
+get_day(4)
+get_day(5)
+get_day(6)
+get_day(7)
+
+"Extra"
+
+class Order_Status(Enum):
+    PENDIENTE = 1
+    ENVIADO = 2
+    ENTREGADO = 3
+    CANCELADO = 4
+    
+class Order:
+    def __init__(self, id):
+        self.id = id
+        self.status = Order_Status.PENDIENTE
+        
+    def shipped(self):
+        if self.status == Order_Status.PENDIENTE:
+            self.status = Order_Status.ENVIADO
+            self.print_status()
+        else:
+            print("El pedido ya ha sido enviado o cancelado")
+            
+    def delivered(self):
+        if self.status == Order_Status.ENVIADO:
+            self.status = Order_Status.ENTREGADO
+            self.print_status()
+        else:
+            print("El pedido debe ser enviado antes de entregarse")
+            
+    def canceled(self):
+        if self.status != Order_Status.ENTREGADO:
+            self.status = Order_Status.CANCELADO
+            self.print_status()
+        else:
+            print("El pedido no se puede cancelar porque ya ha sido entregado")
+        
+    def print_status(self):
+        print(f"El pedido {self.id} esta {self.status.name}")
+        
+order_1 = Order(1)
+order_1.print_status()
+order_1.delivered()
+order_1.shipped()
+order_1.delivered()
+order_1.canceled()
