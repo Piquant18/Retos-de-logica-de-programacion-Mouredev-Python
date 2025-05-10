@@ -1,0 +1,51 @@
+import requests
+
+"Ejercicio"
+
+answers = requests.get("https://github.com/Piquant18")
+if answers.status_code == 200:
+    print(answers.text)
+else:
+    print(f"Error con codigo {answers.status_code} al realizar la peticion")
+    
+"Extra"
+
+pokemon = input("Introduce el nombre o numero del pokemon a buscar: ").lower()
+answers = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon}/")
+
+if answers.status_code == 200:
+    data = answers.json()
+    print("Nombre: ", data["name"])
+    print("Id: ", data["id"])
+    print("Peso: ", data["weight"])
+    print("Altura: ", data["height"])
+    print("Tipo(s): ")
+    for type in data["types"]:
+        print(type["type"]["name"])
+    print("Juego(s): ")
+    for game in data["game_indices"]:
+        print(game["version"]["name"])
+        
+    answers = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{pokemon}/")
+    if answers.status_code == 200:
+        url = answers.json()["evolution_chain"]["url"]
+        answers = requests.get(url)
+        
+        if answers.status_code == 200:
+            data = answers.json()
+            print("Cadena de evolucion: ")
+            
+            def evolutions(data):
+                print(data["species"]["name"])
+                if "evolves_to" in data:
+                    for evolution in data["evolves_to"]:
+                        evolutions(evolution)
+                
+            evolutions(data["chain"])
+            
+        else:
+            print(f"Error {answers.status_code} obteniendo las evoluciones")
+    else:
+        print(f"Error {answers.status_code} obteniendo las evoluciones")
+else:
+    print(f"Error {answers.status_code} obteniendo las evoluciones")
