@@ -1,0 +1,40 @@
+import random
+import time
+import threading
+
+"Ejercicio"
+
+def proceso_de_saludo(name : str, callback):
+    print("Procesando saludo...")
+    callback(name)
+    
+def llamado_de_proceso_de_saludo(name : str):
+    print(f"Hello {name}!")
+    
+proceso_de_saludo("Python", llamado_de_proceso_de_saludo)
+
+"Extra"
+
+def order_process(dish_name : str, confirm_callback, ready_callback, delivered_callback):
+    def order():
+        confirm_callback(dish_name)
+        time.sleep(random.randint(1, 10))
+        ready_callback(dish_name)
+        time.sleep(random.randint(1, 10))
+        delivered_callback(dish_name)
+        
+    threading.Thread(target=order).start()
+        
+def confirm_order(dish_name : str):
+    print(f"El pedido {dish_name} fue confirmado")
+
+def ready_order(dish_name : str):
+    print(f"El pedido {dish_name} esta listo")
+    
+def delivered_order(dish_name : str):
+    print(f"El pedido {dish_name} fue entregado")
+    
+order_process("Pizza 1", confirm_order, ready_order, delivered_order)
+order_process("Pizza 2", confirm_order, ready_order, delivered_order)
+order_process("Pizza 3", confirm_order, ready_order, delivered_order)
+order_process("Pizza 4", confirm_order, ready_order, delivered_order)
