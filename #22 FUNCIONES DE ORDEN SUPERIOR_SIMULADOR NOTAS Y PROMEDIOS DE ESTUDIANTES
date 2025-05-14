@@ -1,0 +1,72 @@
+from functools import reduce
+from datetime import datetime
+
+"Ejercicio"
+
+def apply_function(func, x):
+    return func(x)
+print(apply_function(len, "Jhon"))
+
+
+def apply_multiplier(x):
+    def multiplier(n):
+        return x * n
+    return multiplier
+
+multiplicator = apply_multiplier(5)
+print(multiplicator(5))
+
+
+numbers = [5, 4, 3, 2, 1]
+
+def apply_triple(x):
+    return x * 3
+print(list(map(apply_triple, numbers)))
+
+
+def is_odd(x):
+    return x % 2 == 0
+print(list(filter(is_odd, numbers)))
+
+
+print(sorted(numbers))
+print(sorted(numbers, reverse=True))
+print(sorted(numbers, key=lambda x : -x))
+
+
+"Extra"
+
+Students = [
+    {"name" : "J", "birth" : "20-03-2005", "ratings" : [8, 8, 9]},
+    {"name" : "A", "birth" : "20-03-2006", "ratings" : [5, 10, 10]},
+    {"name" : "M", "birth" : "20-03-2007", "ratings" : [9, 9, 9]}
+]
+
+def average(ratings):
+    return sum(ratings) / len(ratings)
+
+
+print(
+    list(map(lambda Student : {
+        "name" : Student["name"],
+        "average" : average(Student["ratings"])}, Students)
+        )
+    )
+
+
+print(
+    list(
+        map(
+            lambda Student :
+                Student["name"],
+                filter(lambda Student : average(Student["ratings"]) >= 9, Students)
+        )
+    )
+)
+
+
+print(sorted(Students, key= lambda Student: datetime.strptime(
+    Student["birth"], "%d-%m-%Y"), reverse = True))
+
+
+print(max(map(lambda Student: max(Student["ratings"]), Students)))
