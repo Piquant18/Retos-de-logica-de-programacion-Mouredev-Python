@@ -1,0 +1,58 @@
+"Ejercicio"
+
+class Singleton:
+    _instance = None
+    
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super(Singleton, cls).__new__(cls)
+            
+singleton1 = Singleton()
+print(singleton1)
+singleton2 = Singleton()
+print(singleton2)
+
+print(singleton1 is singleton2)
+
+"Extra"
+
+class user_session:
+    _instance = None
+    
+    id : int = None
+    name : str = None
+    username : str = None
+    email : str = None
+    
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super(user_session, cls).__new__(cls)
+        return cls._instance
+    
+    def add_user(self, id, name, username, email):
+        self.id = id
+        self.name = name
+        self.username = username
+        self.email = email
+        
+    def get_user(self):
+        print(f"{self.id}, {self.name}, {self.username}, {self.email}")
+    
+    def close_session(self):
+        self.id = None
+        self.name = None
+        self.username = None
+        self.email = None
+        
+web_page_1 = user_session()
+web_page_1.get_user()
+
+web_page_1.add_user(1, "Jhon", "Piquant18", "jhonmedina0320")
+web_page_1.get_user()
+
+web_page_2 = user_session()
+web_page_2.get_user()
+
+web_page_3 = user_session()
+web_page_3.close_session()
+web_page_3.get_user()
