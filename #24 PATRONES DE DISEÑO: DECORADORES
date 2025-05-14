@@ -1,0 +1,46 @@
+"Ejercicio"
+
+def print_call(function):
+    def print_function():
+        print(f"La funcion '{function.__name__}' ha sido llamada")
+        return function
+    return print_function
+    
+@print_call
+def example_function1():
+    pass
+
+example_function1()
+
+@print_call
+def example_function2():
+    pass
+
+example_function2()
+
+
+"Extra"
+
+def call_counter(function):
+    def counter_function():
+        counter_function.count += 1
+        print(f"La funcion '{function.__name__}' ha sido llamada {counter_function.count} veces")
+        return function
+    counter_function.count = 0
+    return counter_function
+
+@call_counter
+def example_function3():
+    pass
+
+@call_counter
+def example_function4():
+    pass
+
+example_function3()
+example_function3()
+example_function3()
+example_function4()
+example_function3()
+example_function4()
+    
