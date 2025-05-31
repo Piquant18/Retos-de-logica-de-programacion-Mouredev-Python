@@ -1,0 +1,100 @@
+"Ejercicio"
+
+# Incorrecto
+
+class Bird:
+    def fly(self):
+        return "Fliying"
+    
+class Chicken(Bird):
+    def fly(self):
+        raise Exception("Los pollos no vuelan")
+"""    
+bird = Bird()
+print(bird.fly())
+chicken = Chicken()
+chicken.fly()
+"""
+
+class Bird:
+    def move(self):
+        return "Moving"
+    
+class Chicken(Bird):
+    def move(self):
+        return "Walking"
+    
+    
+bird = Bird()
+print(bird.move())
+chicken = Chicken()
+print(chicken.move())
+
+bird = Chicken()
+print(bird.move())
+chicken = Bird()
+print(chicken.move())
+
+
+"Extra"
+
+class Vehicle:
+    def __init__(self, speed = 0):
+        self.speed = speed
+
+    def acelerate(self, increment):
+        self.speed += increment
+        print(f"Velocidad {self.speed} Km/h")
+
+    def brake(self, decrement):
+        self.speed -= decrement
+        if self.speed <= 0:
+            self.speed = 0
+        print(f"Velocidad {self.speed} Km/h")
+
+class Car(Vehicle):
+    def acelerate(self, increment):
+        print(f"El carro esta acelerando {increment} Km/h")
+        return super().acelerate(increment)
+    
+    def brake(self, decrement):
+        print(f"El carro esta frenando {decrement} Km/h")
+        return super().brake(decrement)
+    
+class Bicycle(Vehicle):
+    def acelerate(self, increment):
+        print(f"La bicicleta esta acelerando {increment} Km/h")
+        return super().acelerate(increment)
+    
+    def brake(self, decrement):
+        print(f"La bicicleta esta frenando {decrement} Km/h")
+        return super().brake(decrement)
+    
+class Motorcycle(Vehicle):
+    def acelerate(self, increment):
+        print(f"La moto esta acelerando {increment} Km/h")
+        return super().acelerate(increment)
+    
+    def brake(self, decrement):
+        print(f"La moto esta frenando {decrement} Km/h")
+        return super().brake(decrement)
+    
+def test_vehicle_car(vehicle):
+    vehicle.acelerate(5)
+    vehicle.brake(2)
+
+def test_vehicle_bicycle(vehicle):
+    vehicle.acelerate(3)
+    vehicle.brake(1)
+
+def test_vehicle_motorcycle(vehicle):
+    vehicle.acelerate(5)
+    vehicle.brake(3)
+
+car = Car()
+bicycle = Bicycle()
+motorcycle = Motorcycle()
+
+test_vehicle_car(car)
+test_vehicle_bicycle(bicycle)
+test_vehicle_motorcycle(motorcycle)
