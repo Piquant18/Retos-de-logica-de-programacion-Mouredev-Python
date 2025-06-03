@@ -1,0 +1,92 @@
+from abc import ABC, abstractmethod
+
+"Ejercicio"
+
+# Incorrecto
+
+class Switch:
+    def on(self):
+        print("Enciende la lampara")
+
+    def off(self):
+        print("Apaga la lampara")
+
+class Lamp(Switch):
+    def __init__(self) -> None:
+        self.switch = Switch()
+
+    def operate(self, command):
+        if command == "on":
+            self.switch.on()
+        elif command == "off":
+            self.switch.off()
+
+lamp = Lamp()
+lamp.operate("on")
+lamp.operate("off")
+
+# Correcto
+
+class AbstractSwitch(ABC):
+    def on(self):
+        pass
+
+    def off(self):
+        pass
+
+class LampSwitch(AbstractSwitch):
+    def on(self):
+        print("Enciende la lampara")
+
+    def off(self):
+        print("Apaga la lampara")
+
+class Lamp(LampSwitch):
+    def __init__(self, switch : AbstractSwitch) -> None:
+        self.switch = switch
+
+    def operate(self, command):
+        if command == "on":
+            self.switch.on()
+        elif command == "off":
+            self.switch.off()
+
+lamp = Lamp(LampSwitch())
+lamp.operate("on")
+lamp.operate("off")
+
+
+"Extra"
+
+class Notifier(ABC):
+    @abstractmethod
+    def send(self, message : str):
+        pass
+
+class EmailNotifier(Notifier):
+    def send(self, message):
+        print(f"Enviando Email con texto: {message}")
+
+class PUSHNotifier(Notifier):
+    def send(self, message):
+        print(f"Enviando Push con texto: {message}")
+
+class SMSNotifier(Notifier):
+    def send(self, message):
+        print(f"Enviando SMS con texto: {message}")
+
+class NotifierService:
+    def __init__(self, notifier : Notifier) -> None:
+        self.notifier = notifier
+
+    def notify(self, message : str):
+        self.notifier.send(message)
+
+service = NotifierService(EmailNotifier())
+service_2 = NotifierService(PUSHNotifier())
+service_3 = NotifierService(SMSNotifier())
+
+service.notify("Hola notificador")
+service_2.notify("Hola notificador")
+service_3.notify("Hola notificador")
+        
